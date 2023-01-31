@@ -1,7 +1,10 @@
-local M = {}
+local utils = require("pixie.utils")
 
-function M.hello ()
-  print "Hello world!"
+local pixie = {}
+
+function pixie.hello()
+  local selection = utils.get_language()
+  print(selection)
 end
 
-return M
+return pixie
