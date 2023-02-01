@@ -1,5 +1,7 @@
 # Pixie.nvim
 
+![image](https://user-images.githubusercontent.com/23079646/216171201-4f3261c7-f97d-4046-a011-b9b85a078726.png)
+
 Create screenshots of your code directly from NeoVim
 
 ## Installation
@@ -37,11 +39,13 @@ This plugin uses [puppeteer](https://github.com/puppeteer/puppeteer) to headless
 ### G: Issues to fix
   1. If a line is too wide, it crashes
   2. Typescript react (and probably other languages) don't get detected, see if there is a way to convert from nvim's language to prismjs language
+  3. Resolution is too low (just increase the font size)
 
 ### H: Quality of Life
   1. Detect if NodeJS is installed on the system
   2. Add `PixieSave` command
   3. Add theming support and new themes
+  4. Make the generated screenshots bordered
 
 ### Next steps:
   1. Create a simple logo using Midjourney
