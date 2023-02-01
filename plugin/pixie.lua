@@ -1,8 +1,8 @@
-local run_js = require("pixie.run_js")
+local pixie = require("pixie")
 local install = require("pixie.install")
 
-vim.api.nvim_create_user_command("Pixie", function(options)
-  run_js()
+vim.api.nvim_create_user_command("PixieCopy", function(options)
+  pixie.generate_screenshot { mode = "copy" }
 end, {}
 )
 
