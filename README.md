@@ -2,39 +2,47 @@
 
 Create screenshots of your code directly from NeoVim
 
-If you are reading this, you have probably gone back too far. There is nothing to see here (yet) 
+## Installation
+
+> This package requires `NodeJS` to be installed.
+> See [How to install NodeJS](https://gist.github.com/MichaelCurrin/aa1fc56419a355972b96bce23f3bccba)
+
+> If you are on Linux, please make sure to take a look at [this page](https://github.com/kufii/img-clipboard#linux-use).
+
+### Using [packer.nvim](https://github.com/wbthomason/packer.nvim)
+
+
+```lua
+  use({
+    "atlj/Pixie.nvim",
+    run = function() vim.cmd.PixieInstall() end
+  })
+```
+
+## Usage
+1. Highlight the text you wish to create a Screenshot from
+2. Use `:PixieCopy` command to copy the generated image to your clipboard
+3. You can now paste the generated image
+
+## How does this work
+
+This plugin uses [puppeteer](https://github.com/puppeteer/puppeteer) to headlessly render and take a screenshot of an auto-generated HTML file. 
+
+## Similar plugins
+
+1. [vim-silicon](https://github.com/segeljakt/vim-silicon) uses [silicon](https://github.com/Aloxaf/silicon) to create images using GPU.
 
 ## Roadmap
 
-### A: Setup Lua dev env
-  1. Setup a good LSP
-  2. Make sure linting works fine
+### G: Issues to fix
+  1. If a line is too wide, it crashes
+  2. Typescript react (and probably other languages) don't get detected, see if there is a way to convert from nvim's language to prismjs language
 
-### B: Basic Plugin setup
-  1. Folder structure
-  2. Basic and fast testing (feedback loop should be really fast)
-  3. Figure out how packer works
-
-### C: Get the highlight on Plugin
-  1. Figure out how to grab the highlighted text on the plugin
-
-### D: Run puppeteer from extension
-  1. How to install puppeteer?
-  2. How to install node_modules
-  3. How to ensure Node is installed on the host machine?
-
-### F: Create the Frontend
-  1. Simple HTML + CSS should suffice
-  2. Connect everything together
-
-### G: Quality of Life
-  1. Detect if node is installed on the system
-
-### H: CI/CD
-  1. Create some checks like linting etc.
-  2. There is probably no CD xD
+### H: Quality of Life
+  1. Detect if NodeJS is installed on the system
+  2. Add `PixieSave` command
+  3. Add theming support and new themes
 
 ### Next steps:
   1. Create a simple logo using Midjourney
   2. Share on Twitter
-  3. Add theming support
