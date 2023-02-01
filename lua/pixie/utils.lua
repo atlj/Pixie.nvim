@@ -20,4 +20,7 @@ function utils.get_language()
   return vim.bo.filetype
 end
 
+local current_path = debug.getinfo(1).source:sub(2)
+utils.project_root_path = string.gsub(current_path, "/lua/pixie/utils.lua$", "")
+
 return utils
