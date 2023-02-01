@@ -1,5 +1,5 @@
 {
-  "name": "pixie-js",
+  "name": "pixie",
   "version": "1.0.0",
   "description": "This part is tasked with running puppeteer on an HTML file",
   "main": "src/index.ts",
