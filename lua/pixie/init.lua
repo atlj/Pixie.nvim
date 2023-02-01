@@ -3,6 +3,20 @@ local run_js = require("pixie.run_js")
 
 local pixie = {}
 
+---@param code string
+local function write_code_to_file(code)
+  local file_path = utils.project_root_path .. "/js/tempfile"
+  local file, error = io.open(file_path, "w")
+
+  if (error ~= nil) then
+    return error
+  end
+
+  file:write(code)
+  file:close()
+  return true
+end
+
 ---@param args {mode: "copy" | "save", path: string | nil}
 function pixie.generate_screenshot(args)
   local mode = args.mode
@@ -14,14 +28,18 @@ function pixie.generate_screenshot(args)
     print("Please select text")
     return
   end
-  code = utils.add_escape_chars(code)
-  code = "\"" .. code .. "\""
+
+  local status = write_code_to_file(code)
+  if (status ~= true) then
+    print(status)
+    return
+  end
 
   if (mode == "copy") then
-    local params = { mode, code, language }
+    local params = { mode, language }
     run_js(table.concat(params, " "))
   else
-    local params = { mode, code, language, path }
+    local params = { mode, language, path }
     run_js(table.concat(params, " "))
   end
 end

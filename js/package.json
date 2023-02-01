@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "dev": "npm run build && node lib/index.js copy \"import { ThemeProvider } from '@infrastructure/app-services';\" typescript",
+    "dev": "npm run build && node lib/index.js copy typescript",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit"

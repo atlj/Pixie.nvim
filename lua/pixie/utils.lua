@@ -25,12 +25,6 @@ function utils.get_language()
   return vim.bo.filetype
 end
 
----@param str string
----@return string
-function utils.add_escape_chars(str)
-  return string.gsub(str, "\"", "\\\"")
-end
-
 local current_path = debug.getinfo(1).source:sub(2)
 utils.project_root_path = string.gsub(current_path, "/lua/pixie/utils.lua$", "")
 

@@ -6,15 +6,17 @@ import { copyImg } from 'img-clipboard'
 
 const htmlPath = path.resolve(__dirname, "..", "index.html")
 
+const tempFilePath = path.resolve(__dirname, "..", "tempfile")
+const code = fs.readFileSync(tempFilePath).toString()
+
 // Arguments
 const mode: "copy" | "save" = process.argv[2] as any
-const code = process.argv[3]
-const language = process.argv[4]
-let savePath = process.argv[5]
+const language = process.argv[3]
+let savePath = process.argv[4]
 
 async function main() {
   // Lunch browser for testing
-  const browser = await puppeteer.launch({ headless: false })
+  const browser = await puppeteer.launch()
   const page = await browser.newPage()
   await page.goto(`file://${htmlPath}`)
   await page.waitForSelector("body > pre")
@@ -30,6 +32,8 @@ async function main() {
       fs.writeSync(file, screenshot)
       break
   }
+
+  process.exit(0)
 }
 
 const html =
@@ -37,14 +41,23 @@ const html =
   <head>
   <link href="prism.css" rel = "stylesheet" />
     </head>
-    <pre><code class="language-${language}">${code}</code></pre>
+    <pre><code class="language-${language}">${escape(code)}</code></pre>
       <style>
       </style>
       <script src = "prism.js"> </script>
         </html>`
 
+function escape(html: string) {
+  return html.replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
+}
+
 function writeHtml() {
-  const file = fs.openSync("./index.html", "w")
+  const file = fs.openSync(htmlPath, "w")
   fs.writeSync(file, html)
 }
 
