@@ -27,7 +27,10 @@ If you are reading this, you have probably gone back too far. There is nothing t
   1. Simple HTML + CSS should suffice
   2. Connect everything together
 
-### G: CI/CD
+### G: Quality of Life
+  1. Detect if node is installed on the system
+
+### H: CI/CD
   1. Create some checks like linting etc.
   2. There is probably no CD xD
 
