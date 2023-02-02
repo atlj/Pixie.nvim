@@ -11,7 +11,8 @@ const code = fs.readFileSync(tempFilePath).toString()
 
 // Arguments
 const mode: "copy" | "save" = process.argv[2] as any
-const language = process.argv[3]
+let language = process.argv[3]
+if (language === "typescriptreact") language = "tsx"
 const qualityMultiplier = parseInt(process.argv[4], 10)
 let savePath = process.argv[5]
 const html = createHTML({ code, language, qualityMultiplier })
