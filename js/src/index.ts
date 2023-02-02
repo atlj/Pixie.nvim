@@ -12,8 +12,9 @@ const code = fs.readFileSync(tempFilePath).toString()
 // Arguments
 const mode: "copy" | "save" = process.argv[2] as any
 const language = process.argv[3]
-let savePath = process.argv[4]
-const html = createHTML(code, language)
+const qualityMultiplier = parseInt(process.argv[4], 10)
+let savePath = process.argv[5]
+const html = createHTML({ code, language, qualityMultiplier })
 
 function writeHtml() {
   const file = fs.openSync(htmlPath, "w")

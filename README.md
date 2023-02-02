@@ -41,13 +41,14 @@ This plugin uses [puppeteer](https://github.com/puppeteer/puppeteer) to headless
 ### G: Issues to fix
   1. If a line is too wide, it crashes
   2. Typescript react (and probably other languages) don't get detected, see if there is a way to convert from nvim's language to prismjs language
-  3. Resolution is too low (just increase the font size)
+  3. Quality multiplier cannot take a float value, and it is NaN on javascript when not defined
 
 ### H: Quality of Life
   1. Detect if NodeJS is installed on the system
   2. Add `PixieSave` command
   3. Add theming support and new themes
   4. Make the generated screenshots bordered
+  5. Get the quality etc. from a config
 
 ### Next steps:
   1. Create a simple logo using Midjourney

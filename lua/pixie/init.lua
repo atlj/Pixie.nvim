@@ -17,10 +17,13 @@ local function write_code_to_file(code)
   return true
 end
 
----@param args {mode: "copy" | "save", path: string | nil}
+---@param args {mode: "copy" | "save", path: string | nil, quality_multiplier: number | nil}
 function pixie.generate_screenshot(args)
+  setmetatable(args, { __index = { quality_multiplier = 1 } })
+
   local mode = args.mode
   local path = args.path
+  local quality_multiplier = args.quality_multiplier
   local language = utils.get_language()
 
   local code = utils.get_selection()
@@ -36,10 +39,10 @@ function pixie.generate_screenshot(args)
   end
 
   if (mode == "copy") then
-    local params = { mode, language }
+    local params = { mode, language, quality_multiplier }
     run_js(table.concat(params, " "))
   else
-    local params = { mode, language, path }
+    local params = { mode, language, quality_multiplier, path }
     run_js(table.concat(params, " "))
   end
 end
