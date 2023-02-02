@@ -4,14 +4,7 @@ export function createHTML(code: string, language: string) {
 		<link href="prism.css" rel="stylesheet" />
 	</head>
 	<div id="container">
-		<pre id="codeBox">
-			<div id="topRow">
-				<div class="ball"></div>
-				<div class="ball"></div>
-				<div class="ball"></div>
-			</div>
-			<code class="language-${language}">${escape(code)}</code>
-		</pre>
+		<pre id="codeBox"><div id="topRow"><div class="ball"></div><div class="ball"></div><div class="ball"></div></div><code class="language-${language}">${escape(code)}</code></pre>
 	</div>
 	<style>
 		html {
