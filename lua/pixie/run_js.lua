@@ -5,8 +5,11 @@ local project_root = require("pixie.utils").project_root_path
 local function run_js(args, on_success)
   local command = "cd " .. project_root .. "/js/lib && " .. "node index.js " .. args
   vim.fn.jobstart(command, {
-      -- TODO: check if there are any errors
-      on_exit = on_success
+      on_exit = function (_, status)
+        if status == 0 then
+          on_success()
+        end
+      end
   })
 end
 
