@@ -14,7 +14,6 @@ local function install()
   local command = command_base .. "npm install --omit=dev && npm run build"
   if utils.is_yarn_installed() then
     command = command_base .. "yarn install --production && yarn build"
-    print(command)
   end
 
   vim.fn.jobstart(command, {
