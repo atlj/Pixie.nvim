@@ -1,5 +1,9 @@
 local utils = require("pixie.utils")
 
+local function contains_yarn_warning(str)
+  return str:find("^warning") ~= nil
+end
+
 local function install()
   if (utils.is_npm_installed() ~= true) then
     vim.notify("Node is not installed on your system", vim.log.levels.ERROR)
@@ -18,6 +22,13 @@ local function install()
 
   vim.fn.jobstart(command, {
       on_stderr = function(_, data)
+        -- Ignore the warnings of yarn
+        for index, line in pairs(data) do
+          if contains_yarn_warning(line) then
+            table.remove(data, index)
+          end
+        end
+
         -- data is {''} if there is no issue therefore check the lenght
         if #data > 1 then
           vim.notify(
