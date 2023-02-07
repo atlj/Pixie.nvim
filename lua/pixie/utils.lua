@@ -28,4 +28,13 @@ end
 local current_path = debug.getinfo(1).source:sub(2)
 utils.project_root_path = string.gsub(current_path, "/lua/pixie/utils.lua$", "")
 
+function utils.is_npm_installed()
+  return os.execute("npm -v") == 0
+end
+
+function utils.is_yarn_installed()
+  return os.execute("yarn -v") == 0
+end
+
+
 return utils
