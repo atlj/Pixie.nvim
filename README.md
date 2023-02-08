@@ -1,7 +1,7 @@
 # Pixie.nvim
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/23079646/216171201-4f3261c7-f97d-4046-a011-b9b85a078726.png">
+  <img src="https://user-images.githubusercontent.com/23079646/217597339-59ecb2ae-f575-422b-8818-e348fa5e03a3.png">
 </p>
 
 This NeoVim plugin generates ✨fancy✨ images from your code
