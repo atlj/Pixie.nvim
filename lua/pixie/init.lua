@@ -38,12 +38,16 @@ function pixie.generate_screenshot(args)
     return
   end
 
+  vim.notify("⚙️  Pixie is generating the image...", vim.log.levels.INFO)
+
   if (mode == "copy") then
     local params = { mode, language, quality_multiplier }
-    run_js(table.concat(params, " "), function() vim.notify("📋 Pixie has copied the image to your clipboard", vim.log.levels.INFO) end)
+    run_js(table.concat(params, " "),
+        function() vim.notify("📋 Pixie has copied the image to your clipboard", vim.log.levels.INFO) end)
   else
     local params = { mode, language, quality_multiplier, path }
-    run_js(table.concat(params, " "), function() vim.notify("🗄 Pixie has saved the image to: " .. path, vim.log.levels.INFO) end)
+    run_js(table.concat(params, " "),
+        function() vim.notify("🗄 Pixie has saved the image to: " .. path, vim.log.levels.INFO) end)
   end
 end
 
